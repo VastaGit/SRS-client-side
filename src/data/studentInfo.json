@@ -1,0 +1,34 @@
+{
+    "courses": [
+      { "name": "Mathematics", "code": "MATH101", "instructor": "Dr. John Doe" },
+      { "name": "Physics", "code": "PHYS101", "instructor": "Prof. Jane Smith" }
+    ],
+    "gpa": 3.5,
+    "schedule": [
+      {
+        "time": "9:00 AM - 11:00 AM",
+        "courses": [
+          { "code": "MATH101" },
+          { "code": "" },
+          { "code": "PHYS101" },
+          { "code": "" },
+          { "code": "" }
+        ]
+      },
+      {
+        "time": "1:00 PM - 3:00 PM",
+        "courses": [
+          { "code": "" },
+          { "code": "CHEM101" },
+          { "code": "" },
+          { "code": "BIO101" },
+          { "code": "" }
+        ]
+      }
+    ],
+    "academicRecord": [
+      { "year": "2023", "semester": "Fall", "course": "MATH101", "grade": "A" },
+      { "year": "2023", "semester": "Spring", "course": "PHYS101", "grade": "B+" }
+    ]
+  }
+  
