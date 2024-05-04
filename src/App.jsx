@@ -19,7 +19,7 @@ const App = () => {
               <HomePage courses={studentInfo.courses} gpa={studentInfo.gpa} />
             </Route>
             <Route path="/courseschedule">
-              <CourseSchedule schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
+              <CourseSchedule schedule={studentInfo.schedule} />
             </Route>
             <Route path="/academicrecord">
               <AcademicRecord academicRecord={studentInfo.academicRecord} />
