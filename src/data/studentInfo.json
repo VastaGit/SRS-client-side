@@ -6,23 +6,207 @@
     "gpa": 3.5,
     "schedule": [
       {
-        "time": "9:00 AM - 11:00 AM",
         "courses": [
-          { "code": "MATH101" },
-          { "code": "" },
-          { "code": "PHYS101" },
-          { "code": "" },
-          { "code": "" }
-        ]
-      },
-      {
-        "time": "1:00 PM - 3:00 PM",
-        "courses": [
-          { "code": "" },
-          { "code": "CHEM101" },
-          { "code": "" },
-          { "code": "BIO101" },
-          { "code": "" }
+          {
+            "id": 1,
+            "title": "CMPE324 Section: COMP LAB 1 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 1",
+            "day": "Monday",
+            "start": "12:00:00",
+            "end": "13:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 2,
+            "title": "CMPE324 Section: COMP LAB 1 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 1",
+            "day": "Monday",
+            "start": "13:00:00",
+            "end": "14:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 3,
+            "title": "CMPE324 Section: COMP LAB 1 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 1",
+            "day": "Monday",
+            "start": "14:00:00",
+            "end": "15:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 4,
+            "title": "SFWE344 Section: CR127 Assist. Prof. Dr. FELIX BABALOLA",
+            "loc": "CR127",
+            "day": "Monday",
+            "start": "13:00:00",
+            "end": "14:00:00",
+            "notes": "Assist. Prof. Dr. FELIX BABALOLA"
+          },
+          {
+            "id": 5,
+            "title": "SFWE344 Section: CR127 Assist. Prof. Dr. FELIX BABALOLA",
+            "loc": "CR127",
+            "day": "Monday",
+            "start": "14:00:00",
+            "end": "15:00:00",
+            "notes": "Assist. Prof. Dr. FELIX BABALOLA"
+          },
+          {
+            "id": 6,
+            "title": "MATH228 Section: COMP LAB 4 Assist. Prof. Dr. İBRAHİM AVCI",
+            "loc": "COMP LAB 4",
+            "day": "Tuesday",
+            "start": "08:00:00",
+            "end": "09:00:00",
+            "notes": "Assist. Prof. Dr. İBRAHİM AVCI"
+          },
+          {
+            "id": 7,
+            "title": "MATH228 Section: COMP LAB 4 Assist. Prof. Dr. İBRAHİM AVCI",
+            "loc": "COMP LAB 4",
+            "day": "Tuesday",
+            "start": "09:00:00",
+            "end": "10:00:00",
+            "notes": "Assist. Prof. Dr. İBRAHİM AVCI"
+          },
+          {
+            "id": 8,
+            "title": "SFWE316 Section: COMP LAB 4 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 4",
+            "day": "Tuesday",
+            "start": "14:00:00",
+            "end": "15:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 9,
+            "title": "SFWE316 Section: COMP LAB 4 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 4",
+            "day": "Tuesday",
+            "start": "15:00:00",
+            "end": "16:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 10,
+            "title": "CMPE421 Section: CR146 Assist. Prof. Dr. HÜSEYİN LORT",
+            "loc": "CR146",
+            "day": "Wednesday",
+            "start": "11:00:00",
+            "end": "12:00:00",
+            "notes": "Assist. Prof. Dr. HÜSEYİN LORT"
+          },
+          {
+            "id": 11,
+            "title": "CMPE421 Section: CR146 Assist. Prof. Dr. HÜSEYİN LORT",
+            "loc": "CR146",
+            "day": "Wednesday",
+            "start": "12:00:00",
+            "end": "13:00:00",
+            "notes": "Assist. Prof. Dr. HÜSEYİN LORT"
+          },
+          {
+            "id": 12,
+            "title": "CMPE421 Section: CR146 Assist. Prof. Dr. HÜSEYİN LORT",
+            "loc": "CR146",
+            "day": "Wednesday",
+            "start": "13:00:00",
+            "end": "14:00:00",
+            "notes": "Assist. Prof. Dr. HÜSEYİN LORT"
+          },
+          {
+            "id": 13,
+            "title": "MATH228 Section: COMP LAB 4 Assist. Prof. Dr. İBRAHİM AVCI",
+            "loc": "COMP LAB 4",
+            "day": "Thursday",
+            "start": "09:00:00",
+            "end": "10:00:00",
+            "notes": "Assist. Prof. Dr. İBRAHİM AVCI"
+          },
+          {
+            "id": 14,
+            "title": "MATH228 Section: COMP LAB 4 Assist. Prof. Dr. İBRAHİM AVCI",
+            "loc": "COMP LAB 4",
+            "day": "Thursday",
+            "start": "08:00:00",
+            "end": "09:00:00",
+            "notes": "Assist. Prof. Dr. İBRAHİM AVCI"
+          },
+          {
+            "id": 15,
+            "title": "SFWE344 Section: CR127 Assist. Prof. Dr. FELIX BABALOLA",
+            "loc": "CR127",
+            "day": "Friday",
+            "start": "08:00:00",
+            "end": "09:00:00",
+            "notes": "Assist. Prof. Dr. FELIX BABALOLA"
+          },
+          {
+            "id": 16,
+            "title": "SFWE344 Section: CR127 Assist. Prof. Dr. FELIX BABALOLA",
+            "loc": "CR127",
+            "day": "Friday",
+            "start": "09:00:00",
+            "end": "10:00:00",
+            "notes": "Assist. Prof. Dr. FELIX BABALOLA"
+          },
+          {
+            "id": 17,
+            "title": "SFWE316 Section: COMP LAB 2 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 2",
+            "day": "Friday",
+            "start": "12:00:00",
+            "end": "13:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 18,
+            "title": "SFWE316 Section: COMP LAB 2 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 2",
+            "day": "Friday",
+            "start": "13:00:00",
+            "end": "14:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 19,
+            "title": "SFWE316 Section: COMP LAB 2 Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN",
+            "loc": "COMP LAB 2",
+            "day": "Friday",
+            "start": "14:00:00",
+            "end": "15:00:00",
+            "notes": "Assist. Prof. Dr. MOSTAFA AYOUBI MOBARHAN"
+          },
+          {
+            "id": 20,
+            "title": "COMP432 Section: CR127 Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI",
+            "loc": "CR127",
+            "day": "Friday",
+            "start": "12:00:00",
+            "end": "13:00:00",
+            "notes": "Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI"
+          },
+          {
+            "id": 21,
+            "title": "COMP432 Section: CR127 Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI",
+            "loc": "CR127",
+            "day": "Friday",
+            "start": "13:00:00",
+            "end": "14:00:00",
+            "notes": "Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI"
+          },
+          {
+            "id": 22,
+            "title": "COMP432 Section: CR127 Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI",
+            "loc": "CR127",
+            "day": "Friday",
+            "start": "14:00:00",
+            "end": "15:00:00",
+            "notes": "Öğretim Görevlisi ATEFEH AHMADNIAI KHAJEKINI"
+          }
+          
+        
         ]
       }
     ],
