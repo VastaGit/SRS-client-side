@@ -1,0 +1,65 @@
+.sch-header{
+    color: #A41F13;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.schedule-container {
+    width: 90%;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+  
+.schedule-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+  
+.schedule-container th, .schedule-container td {
+    padding: 0;
+    text-align: left; /* Align text to the left */
+    text-align: center;
+    border: solid 1.5px black;
+}
+  
+.schedule-container th {
+    font-weight: bold;
+}
+
+.schedule-container td, .schedule-container th{
+    height: 35px;
+}
+
+.course{
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.course-group {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+}
+  
+.course-group > div {
+    width: 100%;
+}
+
+tr:nth-child(odd){
+    background-color: #FAF5F1;
+}
+  
+tr:nth-child(even){
+    background-color: #E0DBD8;
+}
+
+td:nth-child(even) >.course-group >.course {
+    background-color: #292F36;
+}
+  
+td:nth-child(odd) >.course-group >.course {
+    background-color: #8F7A6E;
+}
