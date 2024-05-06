@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
   
 .course-group {
@@ -62,4 +63,62 @@ td:nth-child(even) >.course-group >.course {
   
 td:nth-child(odd) >.course-group >.course {
     background-color: #8F7A6E;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.popup h2{
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+  
+.mb{
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.popup button{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    font-size: large;
+    border-radius: 5px;
+    background-color: #A41F13;
+    color: white;
+    border: solid 1px #A41F13;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.popup button:hover{
+    background-color: white;
+    color: black;
+}
+
+.btn{
+    width: 30%;
+    margin: 0 auto;
+}
+
+.c-gold{
+    color: #8F7A6E;
 }
