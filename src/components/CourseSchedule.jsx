@@ -31,6 +31,8 @@ const CourseSchedule = ({ schedule }) => {
   const groupedCourses = groupCoursesByDayAndStartTime(schedule[0].courses);
  
   return (
+    <>
+     <h1 className='sch-header'>Course Schedule</h1>
      <div className="schedule-container">
        <table>
          <tr>
@@ -81,6 +83,7 @@ const CourseSchedule = ({ schedule }) => {
           </div>
         )}
      </div>
+    </>
   );
  };
  
