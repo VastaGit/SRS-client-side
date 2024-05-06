@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../styles/styles.css';
+import '../styles/componentStyles/navbar.css';
+
+
 
 const Navbar = () => {
   return (
     <nav>
-    <button onClick={() => alert('Logout')} className="logout-btn">Logout</button>
-    <div className='nav-items'>
-      <Link to="/" className="nav-link">Home</Link>
-      <Link to="/courseschedule" className="nav-link">Course Schedule</Link>
-      <Link to="/academicrecord" className="nav-link">Academic Record</Link>
-      <Link to="/registration" className="nav-link">Registration</Link>
+      <button onClick={() => alert('Logout')} className="logout-btn">Logout</button>
+      <div className='nav-items'>
+        <NavLink to="/home" className="nav-link" activeClassName="active-link">Home</NavLink>
+        <NavLink to="/courseschedule" className="nav-link" activeClassName="active-link">Course Schedule</NavLink>
+        <NavLink to="/academicrecord" className="nav-link" activeClassName="active-link">Academic Record</NavLink>
+        <NavLink to="/registration" className="nav-link" activeClassName="active-link">Registration</NavLink>
       </div>
     </nav>
   );
