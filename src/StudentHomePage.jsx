@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/Navbar.jsx';
-import HomePage from './components/HomePage.jsx';
-import CourseSchedule from './components/CourseSchedule.jsx';
-import AcademicRecord from './components/AcademicRecord.jsx';
-import Registration from './components/Registration.jsx';
+import Navbar from './studentComp/Navbar.jsx';
+import HomePage from './studentComp/HomePage.jsx';
+import CourseSchedule from './studentComp/CourseSchedule.jsx';
+import AcademicRecord from './studentComp/AcademicRecord.jsx';
+import Registration from './studentComp/Registration.jsx';
 import studentInfo from './data/studentInfo.json';
 import './styles/styles.css';
 

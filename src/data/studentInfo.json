@@ -28,7 +28,18 @@
     ],
     "academicRecord": [
       { "year": "2023", "semester": "Fall", "course": "MATH101", "grade": "A" },
+      { "year": "2023", "semester": "Spring", "course": "PHYS101", "grade": "B+" },
+      { "year": "2023", "semester": "Fall", "course": "MATH101", "grade": "A" },
+      { "year": "2023", "semester": "Spring", "course": "PHYS101", "grade": "B+" },
+      { "year": "2023", "semester": "Fall", "course": "MATH101", "grade": "A" },
       { "year": "2023", "semester": "Spring", "course": "PHYS101", "grade": "B+" }
+    ],
+
+    "studentDetails":[
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"}
     ]
   }
   

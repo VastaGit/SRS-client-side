@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import simulateUserAuthentication from './data/authUtils.jsx'; // Import the authentication function
 import StudentHomePage from './StudentHomePage.jsx';
-import AdvisorHomePage from './AdvisorHomePage.jsx';
 import AdminHomePage from './AdminHomePage.jsx';
+import AdvisorHomePage from './AdvisorHomePage.jsx';
 
 const App = () => {
   // Define state to manage the role of the user
