@@ -1,30 +1,31 @@
 import React from 'react';
-import '../styles/styles.css';
 
 const AcademicRecord = ({ academicRecord }) => {
   return (
-    <div>
-      <h2>Academic Record</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Semester</th>
-            <th>Course</th>
-            <th>Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          {academicRecord.map((record, index) => (
-            <tr key={index}>
-              <td>{record.year}</td>
-              <td>{record.semester}</td>
-              <td>{record.course}</td>
-              <td>{record.grade}</td>
+    <div className="container mx-auto px-4 py-8">
+      <h2 className="text-2xl font-bold mb-4 text-red-600">Academic Record</h2>
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full  border-collapse border border-gray-300">
+          <thead className="bg-blue-100">
+            <tr>
+              <th className="px-4 py-2 text-left">Year</th>
+              <th className="px-4 py-2 text-left">Semester</th>
+              <th className="px-4 py-2 text-left">Course</th>
+              <th className="px-4 py-2 text-left">Grade</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {academicRecord.map((record, index) => (
+              <tr key={index} className={index % 2 === 0 ? 'bg-blue-50' : 'bg-white'}>
+                <td className="px-4 py-2">{record.year}</td>
+                <td className="px-4 py-2">{record.semester}</td>
+                <td className="px-4 py-2">{record.course}</td>
+                <td className="px-4 py-2">{record.grade}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

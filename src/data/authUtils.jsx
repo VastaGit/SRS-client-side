@@ -3,7 +3,7 @@ const simulateUserAuthentication = () => {
     // Mock user data
     const mockUserData = {
       username: 'john_doe',
-      role: 'student', // Change role as needed for testing
+      role: 'admin', // Change role as needed for testing
     };
   
     // Store user information in local storage

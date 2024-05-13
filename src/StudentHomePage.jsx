@@ -15,7 +15,7 @@ const StudentHomePage = () => {
         <Navbar />
         <main className="container">
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <HomePage courses={studentInfo.courses} gpa={studentInfo.gpa} />
             </Route>
             <Route path="/courseschedule">

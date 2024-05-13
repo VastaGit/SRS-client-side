@@ -8,5 +8,10 @@ export default {
     extend: {},
   },
   plugins: [],
+variants: {
+    extend: {
+      textDecoration: ['hover', 'focus', 'active'],
+    },
+  },
 }
 

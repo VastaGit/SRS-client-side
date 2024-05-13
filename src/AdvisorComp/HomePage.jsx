@@ -1,35 +1,32 @@
-/*
 import React from 'react';
 import data from '../data/studentInfo.json';
 
 const Home = () => {
-  const { academicRecord, courses } = data;
+  const { studentDetails } = data;
 
   return (
-    <div>
-      <h2>Academic Record</h2>
-      <div style={{ maxHeight: '300px', overflowY: 'auto' }}> 
-        <table className="table">
+    <div className="flex justify-center">
+      <div className="w-full max-w-lg">
+        <h2 className="text-2xl font-bold mb-4 text-red-600">Students List</h2>
+        <table className="w-full border-collapse border border-gray-300">
           <thead>
-            <tr>
-              <th>Course Name</th>
-              <th>Year</th>
-              <th>Semester</th>
-              <th>Grade</th>
+            <tr className="bg-gray-100">
+              <th className="px-4 py-2">Student Name</th>
+              <th className="px-4 py-2"></th>
             </tr>
           </thead>
           <tbody>
-            {academicRecord.map((record, index) => {
-              const course = courses.find(c => c.code === record.course);
-              return (
-                <tr key={index}>
-                  <td>{course ? course.name : record.course}</td>
-                  <td>{record.year}</td>
-                  <td>{record.semester}</td>
-                  <td>{record.grade}</td>
-                </tr>
-              );
-            })}
+            {studentDetails.map((student, index) => (
+              <tr key={index} className={(index % 2 === 0) ? 'bg-amber-400' : 'bg-white'}>
+                <td className="px-4 py-2">{student.name}</td>
+                <td className="px-4 py-2">
+                  <div className="flex justify-end">
+                    <button onClick={() => handleRegistrationClick(student.studentId)} className="px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-blue-600">Registration</button>
+                    <button onClick={() => handleAcademicRecordClick(student.studentId)} className="ml-2 px-4 py-2 bg-amber-600 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Academic Record</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -38,39 +35,3 @@ const Home = () => {
 };
 
 export default Home;
-*/
-import React from 'react';
-import data from '../data/studentInfo.json';
-import '../AdminComp/MySpecificComponent.module.css';
-const Home = () => {
-  const { studentDetails } = data;
-
-  return (
-    <div>
-      <h2>Students</h2>
-      <table className=" table-striped">
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {studentDetails.map((student, index) => (
-            <tr key={index}>
-              <td>{student.name}</td>
-              <td className=''>
-              <button onClick={() => handleRegistrationClick(student.studentId)} className="btn btn-primary">Registration</button>
-              <button onClick={() => handleAcademicRecordClick(student.studentId)} className="btn btn-secondary">Academic Record</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default Home;
-
-

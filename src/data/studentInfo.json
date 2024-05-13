@@ -223,7 +223,22 @@
       {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
       {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
       {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
+      {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"},
       {"name":"Bila Mahfouth","studentId":"20001","semester":"6","cgba":"3.5"}
-    ]
+    ],
+    
+      "advisors": [
+        { "name": "felix" },
+        { "name": "felix" },
+        { "name": "felix" }
+      ],
+      "students": [
+        { "name": "bilal" },
+        { "name": "bilal" },
+        { "name": "bilal" }
+      ]
+    
   }
   

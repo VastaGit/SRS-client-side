@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../AdminComp/MySpecificComponent.module.css';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location = useLocation();
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
-      <button onClick={() => alert('Logout')} className="btn btn-light">Logout</button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <div className="navbar-nav ml-auto">
-          <Link to="/" className="nav-item nav-link">Home</Link>
-          <Link to="/courseschedule" className="nav-item nav-link">Course Schedule</Link>
+    <nav className="bg-red-600 p-4">
+      <button onClick={() => alert('Logout')} className="bg-white text-red-600 px-4 py-2 rounded">Logout</button>
+      <div className="flex justify-end">
+        <div className="flex space-x-4">
+          <Link to="/" className={`text-white hover:text-gray-200 ${location.pathname === '/' ? 'active-link' : ''} no-underline`}>Home</Link>
+          <Link to="/courseschedule" className={`text-white hover:text-gray-200 ${location.pathname === '/courseschedule' ? 'active-link' : ''} no-underline`}>Course Schedule</Link>
         </div>
       </div>
     </nav>
