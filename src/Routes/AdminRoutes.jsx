@@ -14,7 +14,7 @@ const AdminRouter = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/courses" component={Courses} />
-            <Route path="/adduser" component={AddUser} />
+            <Route path="/add-user" component={AddUser} />
           </Switch>
         </main>
       </div>
