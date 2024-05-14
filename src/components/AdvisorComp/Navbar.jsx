@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import '../../styles/styles.css';
+import '../../styles/componentStyles/navbar.css';
 
 const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="bg-red-600 p-4">
+    <nav>
       <button onClick={() => alert('Logout')} className="bg-white text-red-600 px-4 py-2 rounded">Logout</button>
       <div className="flex justify-end">
         <div className="flex space-x-4">

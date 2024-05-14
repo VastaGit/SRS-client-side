@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseTable from '../CourseTable'
+import CourseSchedule from '../CourseSchedule'
 
 const CourseRegistration = ({schedule}) => {
   return (
@@ -26,7 +26,7 @@ const CourseRegistration = ({schedule}) => {
             </button>
           </div>
         </div>
-        <CourseTable schedule={schedule}/>
+        <CourseSchedule schedule={schedule}/>
         <div className='text-center mt-4'>
           <button className='bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700'>
             Save Selection

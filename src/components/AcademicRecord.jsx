@@ -2,7 +2,7 @@ import React from 'react';
 
 const AcademicRecord = ({ academicRecord }) => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container w-3/4 mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-4 text-red-600">Academic Record</h2>
       <div className="overflow-x-auto">
         <table className="table-auto w-full  border-collapse border border-gray-300">
