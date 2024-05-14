@@ -41,7 +41,7 @@ const CourseSchedule = ({ schedule }) => {
 
   return (
     <div className='schedule-container'>
-      <h1>Course Schedule</h1>
+      <h2 className="text-2xl font-bold mb-4 text-red-600">Course Schedule</h2>
       <table>
         <tr>
           <th></th>
