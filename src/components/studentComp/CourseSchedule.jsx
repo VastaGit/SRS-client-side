@@ -1,5 +1,5 @@
 import React, { useState }  from 'react';
-import '../styles/componentStyles/courseSchedule.css';
+import '../../styles/componentStyles/courseSchedule.css';
 
 
 const groupCoursesByDayAndStartTime = (courses) => {

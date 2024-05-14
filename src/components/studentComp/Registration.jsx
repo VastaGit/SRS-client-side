@@ -1,7 +1,7 @@
 import React from 'react';
 import CourseSchedule from './CourseTable'; 
 import CourseRegistration from './CourseRegistration';
-import '../styles/styles.css';
+import '../../styles/styles.css';
 
 const Registration = () => {
   return (

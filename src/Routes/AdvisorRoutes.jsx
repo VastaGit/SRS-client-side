@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './AdvisorComp/Navbar.jsx';
 import AcademicRecord from './AdvisorComp/HomePage.jsx';
-import CourseSchedual from './AdvisorComp/CourseSchedual.jsx';
+import CourseSchedule from './AdvisorComp/CourseSchedule.jsx';
 
 const AdvisorHomePage = () => {
   return (
@@ -13,7 +13,7 @@ const AdvisorHomePage = () => {
         <main>
           <Switch>
             <Route exact path="/" component={AcademicRecord} />
-            <Route path="/courseschedule" component={CourseSchedual} />
+            <Route path="/courseschedule" component={CourseSchedule} />
           </Switch>
         </main>
       </div>
@@ -25,12 +25,12 @@ export default AdvisorHomePage;
 
 */import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './AdvisorComp/Navbar.jsx';
-import HomePage from './AdvisorComp/HomePage.jsx';
-import Courses from './AdminComp/Courses.jsx';
+import Navbar from '../components/AdvisorComp/Navbar.jsx';
+import HomePage from '../components/AdvisorComp/HomePage.jsx';
+import Courses from '../components/AdminComp/Courses.jsx';
 
 
-const AdminHomePage = () => {
+const AdvisorRouter = () => {
   return (
     <Router>
       <div>
@@ -46,4 +46,4 @@ const AdminHomePage = () => {
   );
 };
 
-export default AdminHomePage;
+export default AdvisorRouter;

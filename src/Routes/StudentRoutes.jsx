@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './studentComp/Navbar.jsx';
-import HomePage from './studentComp/HomePage.jsx';
-import CourseSchedule from './studentComp/CourseSchedule.jsx';
-import AcademicRecord from './studentComp/AcademicRecord.jsx';
-import Registration from './studentComp/Registration.jsx';
-import studentInfo from './data/studentInfo.json';
-import './styles/styles.css';
+import Navbar from '../components/studentComp/Navbar.jsx';
+import HomePage from '../components/studentComp/HomePage.jsx';
+import CourseSchedule from '../components/studentComp/CourseSchedule.jsx';
+import AcademicRecord from '../components/studentComp/AcademicRecord.jsx';
+import Registration from '../components/studentComp/Registration.jsx';
+import studentInfo from '../data/studentInfo.json';
+import '../styles/styles.css';
 
-const StudentHomePage = () => {
+const StudentRouter = () => {
   return (
     <Router>
       <div>
@@ -34,4 +34,4 @@ const StudentHomePage = () => {
   );
 };
 
-export default StudentHomePage;
+export default StudentRouter;
