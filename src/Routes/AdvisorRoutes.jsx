@@ -8,7 +8,7 @@ import CourseRegistration from '../components/AdvisorComp/CourseRegistration.jsx
 import studentInfo from '../data/studentInfo.json';
 import AcademicRecord from '../components/AcademicRecord.jsx';
 
-const AdvisorRouter = () => {
+const AdvisorRouter = ({userRole, setUserRole}) => {
   return (
     <Router>
       <div>
@@ -25,6 +25,13 @@ const AdvisorRouter = () => {
             </Route>
             <Route path="/academic-record">
               <AcademicRecord academicRecord={studentInfo.academicRecord} />
+            </Route>
+            <Route path='/logout'>
+              {({ history }) => {
+                setUserRole(null)
+                history.push('/')
+                return null
+              }}
             </Route>
           </Switch>
         </main>

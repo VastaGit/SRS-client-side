@@ -1,4 +1,5 @@
 {
+    "id": 1,
     "courses": [
       { "name": "Mathematics", "code": "MATH101", "instructor": "Dr. John Doe" },
       { "name": "Physics", "code": "PHYS101", "instructor": "Prof. Jane Smith" }

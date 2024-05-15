@@ -25,13 +25,13 @@ const App = () => {
   let Page
   switch (userRole) {
     case 'student':
-      Page = <StudentRouter />
+      Page = <StudentRouter userRole={userRole} setUserRole={setUserRole}/>
       break
     case 'advisor':
-      Page = <AdvisorRouter />
+      Page = <AdvisorRouter userRole={userRole} setUserRole={setUserRole}/>
       break
     case 'admin':
-      Page = <AdminRouter />
+      Page = <AdminRouter userRole={userRole} setUserRole={setUserRole}/>
       break
     default:
       Page = <Login onLogin={handleLogin} />
