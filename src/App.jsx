@@ -1,53 +1,46 @@
-// App.jsx
-
-import React, { useState, useEffect } from 'react';
-import simulateUserAuthentication from './data/authUtils.jsx'; // Import the authentication function
-import StudentHomePage from './StudentHomePage.jsx';
-import AdminHomePage from './AdminHomePage.jsx';
-import AdvisorHomePage from './AdvisorHomePage.jsx';
+import React, { useState, useEffect } from 'react'
+import StudentRouter from './Routes/StudentRoutes.jsx'
+import AdminRouter from './Routes/AdminRoutes.jsx'
+import AdvisorRouter from './Routes/AdvisorRoutes.jsx'
+import Login from './Login.jsx'
 
 const App = () => {
-  // Define state to manage the role of the user
-  const [role, setRole] = useState(null);
+  const [userRole, setUserRole] = useState(null)
 
-  useEffect(() => {
-    // Call the authentication function when the app starts to simulate user login
-    simulateUserAuthentication();
-    
-    // Retrieve user information from local storage
-    const userData = localStorage.getItem('user');
+  const handleLogin = (username, password) => {
 
-    if (userData) {
-      // Parse user data and set the role
-      const { role } = JSON.parse(userData);
-      setRole(role);
-    } else {
-      console.error('User data not found');
+    const mockUserData = {
+      username: 'john_doe',
+      role: 'student'
     }
-  }, []);
 
-  // Conditionally render the homepage based on the role
-  let homePage;
-  switch (role) {
-    case 'student':
-      homePage = <StudentHomePage />;
-      break;
-    case 'advisor':
-      homePage = <AdvisorHomePage />;
-      break;
-    case 'admin':
-      homePage = <AdminHomePage />;
-      break;
-    default:
-      homePage = <div>Loading...</div>;
+    if (mockUserData) {
+      setUserRole(mockUserData.role)
+      console.log(username, password)
+    } else {
+      console.error('User data not found')
+    }
   }
 
+  let Page
+  switch (userRole) {
+    case 'student':
+      Page = <StudentRouter userRole={userRole} setUserRole={setUserRole}/>
+      break
+    case 'advisor':
+      Page = <AdvisorRouter userRole={userRole} setUserRole={setUserRole}/>
+      break
+    case 'admin':
+      Page = <AdminRouter userRole={userRole} setUserRole={setUserRole}/>
+      break
+    default:
+      Page = <Login onLogin={handleLogin} />
+  }
   return (
     <div>
-      {/* Render the homepage based on the role */}
-      {homePage}
+      {Page}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

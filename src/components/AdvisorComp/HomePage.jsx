@@ -1,7 +1,7 @@
 import React from 'react';
-import data from '../data/studentInfo.json';
+import data from '../../data/studentInfo.json';
 
-const Home = () => {
+const HomePage = () => {
   const { studentDetails } = data;
 
   return (
@@ -34,4 +34,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

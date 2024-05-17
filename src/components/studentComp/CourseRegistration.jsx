@@ -1,13 +1,13 @@
 import React from 'react'
-import CourseTable from './CourseTable'
+import CourseSchedule from '../CourseSchedule'
 
-const CourseRegistration = () => {
+const CourseRegistration = ({schedule}) => {
   return (
     <div className='bg-white min-h-screen'>
       <div className='max-w-4xl mx-auto p-8'>
-        <h1 className='text-3xl font-bold mb-6'>Course Registration</h1>
+        <h2 className='text-2xl font-bold mb-4 text-red-600'>Course Registration</h2>
         <div className='mb-6 p-4 bg-white shadow-md'>
-          <h2 className='text-xl font-semibold mb-4'>Selected Courses</h2>
+          <h2 className='text-xl font-semibold mb-4  text-red-600'>Selected Courses</h2>
           <div className='grid grid-cols-3 gap-4 mb-4'>
             <div>Course name</div>
             <div>ECTS</div>
@@ -26,7 +26,7 @@ const CourseRegistration = () => {
             </button>
           </div>
         </div>
-        <CourseTable />
+        <CourseSchedule schedule={schedule}/>
         <div className='text-center mt-4'>
           <button className='bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700'>
             Save Selection

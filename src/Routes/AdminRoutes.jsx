@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AdminNavbar from './AdminComp/AdminNavbar.jsx';
-import HomePage from './AdminComp/HomePage.jsx';
-import Courses from './AdminComp/Courses.jsx';
-import AddUser from './AdminComp/AddUser.jsx';
+import AdminNavbar from '../components/AdminComp/AdminNavbar.jsx';
+import HomePage from '../components/AdminComp/HomePage.jsx';
+import Courses from '../components/AdminComp/Courses.jsx';
+import AddUser from '../components/AdminComp/AddUser.jsx';
 
-const AdminHomePage = () => {
+const AdminRouter = () => {
   return (
     <Router>
       <div>
@@ -14,7 +14,7 @@ const AdminHomePage = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/courses" component={Courses} />
-            <Route path="/adduser" component={AddUser} />
+            <Route path="/add-user" component={AddUser} />
           </Switch>
         </main>
       </div>
@@ -22,4 +22,4 @@ const AdminHomePage = () => {
   );
 };
 
-export default AdminHomePage;
+export default AdminRouter;

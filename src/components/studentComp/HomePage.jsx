@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomePage = ({ courses, gpa }) => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container w-5/6 mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-4 text-red-600">Current Courses</h2>
       <div className="overflow-x-auto">
         <table className="table-auto w-full  border-collapse border border-black-500 " >
