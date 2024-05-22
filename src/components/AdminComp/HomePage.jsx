@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import studentInfo from '../../data/studentInfo.json';
+import ModalComponent from './ModalComponent';
 
 const HomePage = () => {
   const advisorCount = studentInfo.advisors.length;
-  const studentCount = studentInfo.studentDetails.length;
+  const studentCount = studentInfo.students.length;
 
-  const handleViewDetails = (name) => {
-    alert(`View details for ${name}`);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDetails, setSelectedDetails] = useState(null);
+
+  const handleViewDetails = (details) => {
+    setSelectedDetails(details);
+    setIsModalOpen(true);
   };
 
   return (
@@ -29,9 +34,9 @@ const HomePage = () => {
                   <div className='flex justify-end'>
                     <button
                       className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
-                      onClick={() => handleViewDetails(advisor.name)}
+                      onClick={() => handleViewDetails(advisor)}
                     >
-                      View
+                      View Details
                     </button>
                     </div>
                   </td>
@@ -52,16 +57,16 @@ const HomePage = () => {
               </tr>
             </thead>
             <tbody>
-              {studentInfo.studentDetails.map((student, index) => (
+              {studentInfo.students.map((student, index) => (
                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-green-100' : 'bg-green-200'}`}>
                   <td className="py-2 px-4">{student.name}</td>
-                  <td className="py-2 px-4 ">
+                  <td className="py-2 px-4">
                   <div className='flex justify-end'>
                     <button
                       className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
-                      onClick={() => handleViewDetails(student.name)}
+                      onClick={() => handleViewDetails(student)}
                     >
-                      View
+                      View Details
                     </button>
                     </div>
                   </td>
@@ -72,6 +77,11 @@ const HomePage = () => {
         </div>
         <p className="mt-2 text-red-600">Number of students: {studentCount}</p>
       </div>
+      <ModalComponent
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        details={selectedDetails}
+      />
     </div>
   );
 };
