@@ -11,7 +11,7 @@ const App = () => {
 
     const mockUserData = {
       username: 'john_doe',
-      role: 'admin'
+      role: 'student'
     }
 
     if (mockUserData) {
