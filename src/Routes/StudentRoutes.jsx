@@ -10,7 +10,7 @@ import '../styles/styles.css'
 
 const StudentRouter = ({ userRole, setUserRole }) => {
 
-  const [studentData, setStudentData] = useState(null)
+  // const [studentData, setStudentData] = useState(null)
 
   // useEffect(() => {
   //   const getStudentData = async () => {
@@ -38,7 +38,7 @@ const StudentRouter = ({ userRole, setUserRole }) => {
             </Route>
             <Route path='/course-schedule'>
               <CourseSchedule
-                schedule={studentInfo.schedule}
+                studentId={studentInfo.id}
                 showCourseDetails={courseCode =>
                   alert(`Course Details for ${courseCode}`)
                 }
