@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 const AddUser = () => {
@@ -12,18 +13,29 @@ const AddUser = () => {
     advisorID: '' // New field to store the selected advisor (if role is advisor)
   });
 
+  // State to store the fetched advisors
+  const [advisors, setAdvisors] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5145/Advisor');
+        setAdvisors(response.data);
+        console.log(response.data.advisorId);
+      } catch (error) {
+        console.error("Error fetching advisors:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array means this effect runs once on mount
+
   // Example list of departments
   const departments = [
     { id: 1, name: 'Computer Science' },
     { id: 2, name: 'Mathematics' },
     { id: 3, name: 'Physics' },
     // Add more departments as needed
-  ];
-
-  const advisors = [
-    { id: 1, name: 'Dr. Smith' },
-    { id: 2, name: 'Prof. Johnson' },
-    // Add more advisors as needed
   ];
 
   const handleFieldChange = (event) => {
@@ -44,25 +56,18 @@ const AddUser = () => {
     setFormData(prevState => ({
      ...prevState,
       role: selectedRole,
-      advisor: selectedRole === 'advisor'? '' : prevState.advisor // Reset advisor if role is not advisor
+      advisorID: selectedRole === 'advisor'? -1 : prevState.advisorID // Reset advisor if role is not advisor
     }));
-
-    // // Conditionally show/hide advisor input field based on selected role
-    // if (selectedRole === 'advisor') {
-    //   document.getElementById('advisorInput').style.display = 'block';
-    // } else {
-    //   document.getElementById('advisorInput').style.display = 'none';
-    // }
   };
 
   const handleAdvisorChange = (event) => {
     const selectedAdvisorId = parseInt(event.target.value);
-    const selectedAdvisor = advisors.find(advisor => advisor.id === selectedAdvisorId);
+    const selectedAdvisor = advisors.find(advisor => advisor.advisorId === selectedAdvisorId);
     if (selectedAdvisor) {
       // Update the state with only the advisor ID
       setFormData(prevState => ({
       ...prevState,
-        advisor: selectedAdvisorId // Store only the advisor ID
+        advisorID: selectedAdvisorId // Store only the advisor ID
       }));
     }
   };
@@ -124,11 +129,11 @@ const AddUser = () => {
             </div>
             {formData.role === 'student' && (
               <div className="input-item w-full flex flex-col mb-5">
-                <label className='text-xl font-bold' htmlFor="advisor">Advisor</label>
-                <select id="advisorInput" name="advisor" value={formData.advisor || ''} onChange={handleAdvisorChange} className="px-3 py-2 border rounded border border-primary border-2">
+                <label className='text-xl font-bold' htmlFor="advisorInput">Advisor</label>
+                <select id="advisorInput" name="advisor" value={formData.advisorID || -2} onChange={handleAdvisorChange} className="px-3 py-2 border rounded border border-primary border-2">
                   <option value="">Select an advisor</option>
                   {advisors.map(advisor => (
-                    <option key={advisor.id} value={advisor.id}>{advisor.name}</option>
+                    <option key={advisor.advisorId} value={advisor.advisorId}>{advisor.professor.firstName + ' ' + advisor.professor.lastName}</option>
                   ))}
                 </select>
               </div>
