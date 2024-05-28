@@ -78,9 +78,9 @@ const Courses = () => {
         <div className="max-h-64 overflow-y-auto mb-2">
           <table className="min-w-full bg-white border border-gray-300">
             <tbody>
-              {studentInfo.courseDetails.map((course, index) => (
+              {studentInfo.schedule[0].courses.map((course, index) => (
                 <tr key={index} className={`border-b ${index % 2 === 0 ? 'bg-blue-100' : 'bg-blue-200'}`}>
-                  <td className="py-2 px-4">{course.name}</td>
+                  <td className="py-2 px-4">{course.title}</td>
                   <td className="py-2 px-4">
                   <div className='flex justify-end gap-3'>
                     <button onClick={togglePopup} className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
@@ -321,5 +321,3 @@ const Courses = () => {
 };
 
 export default Courses;
-
-
