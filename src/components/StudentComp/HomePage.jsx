@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const HomePage = ({ courses, gpa }) => {
+const HomePage = ({ studentId }) => {
+  const [courses, setCourses] = useState([]);
+  const gpa = 3.5;
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('http://localhost:5145/Schedule/StudentId/' + studentId);
+        setCourses(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching courses:', error.message);
+      }
+    };
+    fetchCourses();
+  }, [studentId]);
+
   return (
     <div className="container w-5/6 mx-auto px-4 py-8">
       <h2 className="text-2xl font-bold mb-4 text-red-600">Current Courses</h2>
@@ -16,9 +33,9 @@ const HomePage = ({ courses, gpa }) => {
           <tbody>
             {courses.map((course, index) => (
               <tr key={index} className={index % 2 === 0 ? 'bg-blue-50' : 'bg-white'}>
-                <td className="px-4 py-2">{course.name}</td>
-                <td className="px-4 py-2">{course.code}</td>
-                <td className="px-4 py-2">{course.instructor}</td>
+                <td className="px-4 py-2">{course.courseName}</td>
+                <td className="px-4 py-2">{course.courseCode}</td>
+                <td className="px-4 py-2">{course.professorName}</td>
               </tr>
             ))}
           </tbody>

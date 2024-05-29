@@ -1,7 +1,7 @@
 import React from 'react'
 import CourseSchedule from '../CourseSchedule'
 
-const CourseRegistration = ({schedule}) => {
+const CourseRegistration = ({studentId}) => {
   return (
     <div className='bg-white min-h-screen'>
       <div className='max-w-4xl mx-auto p-8'>
@@ -26,7 +26,7 @@ const CourseRegistration = ({schedule}) => {
             </button>
           </div>
         </div>
-        <CourseSchedule schedule={schedule}/>
+        <CourseSchedule studentId={studentId}/>
         <div className='text-center mt-4'>
           <button className='bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700'>
             Save Selection
