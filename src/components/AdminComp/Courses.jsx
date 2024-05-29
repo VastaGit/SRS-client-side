@@ -176,6 +176,15 @@ const Courses = () => {
                             </div>
                             <div className='flex gap-4' style={{"margin-bottom": "0.5rem"}}>
                               <div className='flex flex-col w-full'>
+                                <label htmlFor="faculty">Faculty</label>
+                                <select id="faculty" className="px-3 py-2 border rounded border border-primary border-2" onChange={handleFacultyChange}>
+                                  <option value="all" selected>All</option>
+                                  <option value="engineering">Engineering</option>
+                                  <option value="economics">Economics</option>
+                                  <option value="architecture">Architecture</option>
+                                </select>
+                              </div>
+                              <div className='flex flex-col w-full'>
                                 <label htmlFor="department">Department</label>
                                 <select id="department" className="px-3 py-2 border rounded border border-primary border-2" onChange={handleFacultyChange}>
                                   <option value="all" selected>All</option>
@@ -250,6 +259,15 @@ const Courses = () => {
                           </div>
                           <div className='flex gap-4' style={{"margin-bottom": "0.5rem"}}>
                             <div className='flex flex-col w-full'>
+                              <label htmlFor="faculty">Faculty</label>
+                              <select id="faculty" className="px-3 py-2 border rounded border border-primary border-2" onChange={handleFacultyChange}>
+                                <option value="all" selected>All</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="economics">Economics</option>
+                                <option value="architecture">Architecture</option>
+                              </select>
+                            </div>
+                            <div className='flex flex-col w-full'>
                               <label htmlFor="department">Department</label>
                               <select id="department" className="px-3 py-2 border rounded border border-primary border-2" onChange={handleFacultyChange}>
                                 <option value="all" selected>All</option>
@@ -274,6 +292,7 @@ const Courses = () => {
                                 <input id="preRequisites" name="preRequisites" type="text" required className="border border-primary border-2 appearance-none rounded relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Course Names" />
                               </div>
                             </div>
+                          {/* Add other form fields similarly */}
                         </div>
                         <div className="flex items-center justify-between">
                           <button type="submit" onClick={toggleEditFormVisibility} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
