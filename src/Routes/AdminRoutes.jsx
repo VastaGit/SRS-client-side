@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import AdminNavbar from '../components/AdminComp/AdminNavbar.jsx';
 import HomePage from '../components/AdminComp/HomePage.jsx';
 import Courses from '../components/AdminComp/Courses.jsx';
@@ -12,16 +12,20 @@ const AdminRouter = ({userRole, setUserRole}) => {
         <AdminNavbar />
         <main>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/courses" component={Courses} />
-            <Route path="/addUser" component={AddUser} />
-            <Route path='/logout'>
+            <Route exact path="/admin/home" component={HomePage} />
+            <Route path="/admin/courses" component={Courses} />
+            <Route path="/admin/addUser" component={AddUser} />
+            <Route path='/admin/logout'>
               {({ history }) => {
-                setUserRole(null)
-                history.push('/')
-                return null
-              }}
+                  setUserRole(null)
+                  localStorage.removeItem('jwt')
+                  localStorage.removeItem('userRole')
+                  localStorage.removeItem('username')
+                  history.push('/')
+                  return null
+                }}
             </Route>
+            <Redirect from='/' to='/admin/home' />
           </Switch>
         </main>
       </div>

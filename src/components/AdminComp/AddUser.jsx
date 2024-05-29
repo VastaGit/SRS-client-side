@@ -6,7 +6,7 @@ const AddUser = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    departmentId: 0,
+    departmentId: '',
     email: '',
     password: '',
     role: '', // New field to store the user role
@@ -15,13 +15,19 @@ const AddUser = () => {
 
   // State to store the fetched advisors
   const [advisors, setAdvisors] = useState([]);
+  const [departments, setDepartments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5145/Advisor');
-        setAdvisors(response.data);
-        console.log(response.data.advisorId);
+        const advisorResponse = await axios.get('http://localhost:5145/Advisor');
+        setAdvisors(advisorResponse.data);
+        console.log(advisorResponse.data);
+
+        //fetching departments data
+        const departmentResponse = await axios.get('http://localhost:5145/Department');
+        setDepartments(departmentResponse.data);
+        console.log(departmentResponse.data);
       } catch (error) {
         console.error("Error fetching advisors:", error);
       }
@@ -30,14 +36,6 @@ const AddUser = () => {
     fetchData();
   }, []); // Empty dependency array means this effect runs once on mount
 
-  // Example list of departments
-  const departments = [
-    { id: 1, name: 'Computer Science' },
-    { id: 2, name: 'Mathematics' },
-    { id: 3, name: 'Physics' },
-    // Add more departments as needed
-  ];
-
   const handleFieldChange = (event) => {
     const { name, value } = event.target;
     setFormData(prevState => ({...prevState, [name]: value }));
@@ -45,9 +43,9 @@ const AddUser = () => {
 
   const handleDepartmentChange = (event) => {
     const selectedDepartmentId = parseInt(event.target.value); // Parse the selected department ID
-    const selectedDepartment = departments.find(dep => dep.id === selectedDepartmentId);
+    const selectedDepartment = departments.find(dep => dep.departmentId === selectedDepartmentId);
     if (selectedDepartment) {
-      setFormData(prevState => ({...prevState, departmentId: selectedDepartment.id}));
+      setFormData(prevState => ({...prevState, departmentId: selectedDepartment.departmentId}));
     }
   };
 
@@ -111,10 +109,10 @@ const AddUser = () => {
           </div>
           <div className="input-item w-full flex flex-col mb-5">
             <label className='text-xl font-bold' htmlFor="department">Department</label>
-            <select id="department" name="departmentId" value={formData.departmentId} onChange={handleDepartmentChange} className="px-3 py-2 border rounded border border-primary border-2">
+            <select id="department" name="departmentId" value={formData.departmentId  || '0'} onChange={handleDepartmentChange} className="px-3 py-2 border rounded border border-primary border-2">
               <option value="">Select a department</option>
               {departments.map(dep => (
-                  <option key={dep.id} value={dep.id}>{dep.name}</option> // Changed value to dep.id
+                  <option key={dep.departmentId} value={dep.departmentId}>{dep.departmentName}</option> // Changed value to dep.id
               ))}
             </select>
           </div>
@@ -130,7 +128,7 @@ const AddUser = () => {
             {formData.role === 'student' && (
               <div className="input-item w-full flex flex-col mb-5">
                 <label className='text-xl font-bold' htmlFor="advisorInput">Advisor</label>
-                <select id="advisorInput" name="advisor" value={formData.advisorID || -2} onChange={handleAdvisorChange} className="px-3 py-2 border rounded border border-primary border-2">
+                <select id="advisorInput" name="advisor" value={formData.advisorID || '0'} onChange={handleAdvisorChange} className="px-3 py-2 border rounded border border-primary border-2">
                   <option value="">Select an advisor</option>
                   {advisors.map(advisor => (
                     <option key={advisor.advisorId} value={advisor.advisorId}>{advisor.professor.firstName + ' ' + advisor.professor.lastName}</option>

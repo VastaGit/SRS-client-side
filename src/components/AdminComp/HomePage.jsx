@@ -6,9 +6,12 @@ import ModalComponent from './ModalComponent';
 const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedDetails, setSelectedDetails] = useState(null);
+  const [selectedType, setSelectedType] = useState(""); // To keep track of the selected item type
 
-  const handleViewDetails = (details) => {
+
+  const handleViewDetails = (details, type) => {
     setSelectedDetails(details);
+    setSelectedType(type); // Set the type of the selected item
     setIsModalOpen(true);
   };
 
@@ -55,7 +58,7 @@ const HomePage = () => {
                   <div className='flex justify-end'>
                     <button
                       className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
-                      onClick={() => handleViewDetails(advisor)}
+                      onClick={() => handleViewDetails(advisor, "advisor")}
                     >
                       View Details
                     </button>
@@ -80,7 +83,7 @@ const HomePage = () => {
                   <div className='flex justify-end'>
                     <button
                       className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
-                      onClick={() => handleViewDetails(student)}
+                      onClick={() => handleViewDetails(student, "student")}
                     >
                       View Details
                     </button>
@@ -97,6 +100,7 @@ const HomePage = () => {
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         details={selectedDetails}
+        type={selectedType}
       />
     </div>
   );

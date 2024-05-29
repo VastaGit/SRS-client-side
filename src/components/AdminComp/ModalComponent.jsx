@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const ModalComponent = ({ isOpen, onRequestClose, details }) => {
+const ModalComponent = ({ isOpen, onRequestClose, details, type  }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -12,15 +12,22 @@ const ModalComponent = ({ isOpen, onRequestClose, details }) => {
       overlayClassName="fixed inset-0 bg-black bg-opacity-50"
     >
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Details</h2>
-        {details && (
+        <h2 className="text-2xl font-bold mb-4">{type.charAt(0).toUpperCase() + type.slice(1)} Details</h2>
+        {type === "advisor" && (
           <div>
-            {details.professor.firstName && <p><strong>Name:</strong> {details.professor.firstName}</p>}
-            {/* <p><strong>Email:</strong> {details.email}</p> */}
-            {/* <p><strong>ID:</strong> {details.professorId}</p> */}
-            {/* {details.faculty && <p><strong>Faculty:</strong> {details.faculty}</p>} */}
-            {/* {details.department && <p><strong>Department:</strong> {details.department}</p>} */}
-            {/* {details.advisor && <p><strong>Advisor:</strong> {details.advisor}</p>} */}
+            <p><strong>ID:</strong> {details.advisorId}</p>
+            <p><strong>Name:</strong> {details.professor.firstName} {details.professor.lastName}</p>
+            <p><strong>Department ID:</strong> {details.professor.departmentId}</p>
+            {/* Add more advisor-specific details here */}
+          </div>
+        )}
+        {type === "student" && (
+          <div>
+            <p><strong>ID:</strong> {details.studentId}</p>
+            <p><strong>Name:</strong> {details.firstName} {details.lastName}</p>
+            <p><strong>Department ID:</strong> {details.departmentId}</p>
+            <p><strong>Advisor ID:</strong> {details.advisorId}</p>
+            {/* Add more student-specific details here */}
           </div>
         )}
         <button

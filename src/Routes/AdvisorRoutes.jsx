@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from '../components/AdvisorComp/Navbar.jsx';
 import HomePage from '../components/AdvisorComp/HomePage.jsx';
 import Courses from '../components/AdminComp/Courses.jsx';
@@ -15,24 +15,28 @@ const AdvisorRouter = ({userRole, setUserRole}) => {
         <Navbar />
         <main>
           <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/courses" component={Courses} />
-            <Route path="/course-schedule">
+            <Route exact path="/advisor/home" component={HomePage} />
+            {/* <Route path="/advisor/courses" component={Courses} /> */}
+            <Route path="/advisor/course-schedule">
               <CourseSchedule schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
             </Route>
-            <Route path="/course-registration">
+            {/* <Route path="/advisor/course-registration">
               <CourseRegistration schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
             </Route>
-            <Route path="/academic-record">
+            <Route path="/advisor/academic-record">
               <AcademicRecord academicRecord={studentInfo.academicRecord} />
-            </Route>
-            <Route path='/logout'>
+            </Route> */}
+            <Route path='/advisor/logout'>
               {({ history }) => {
                 setUserRole(null)
+                localStorage.removeItem('jwt')
+                localStorage.removeItem('userRole')
+                localStorage.removeItem('username')
                 history.push('/')
                 return null
               }}
             </Route>
+            <Redirect from='/' to='/advisor/home' />
           </Switch>
         </main>
       </div>

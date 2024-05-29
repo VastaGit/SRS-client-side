@@ -1,27 +1,13 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <nav className='justify-end'>
       <div className='flex space-x-4'>
-        <Link 
-          to='/' 
-          className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'>
-          Home
-        </Link>
-        <Link
-          to='/course-schedule'
-          className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'
-        >
-          Course Schedule
-        </Link>
-        <Link
-          to='/logout'
-          className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'
-        >
-          Logout
-        </Link>
+        <NavLink to='/advisor/home' className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'>Home</NavLink>
+        <NavLink to='/advisor/course-schedule' className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'>Course Schedule</NavLink>
+        <NavLink to='/advisor/logout' className='text-white hover:text-gray-200 no-underline border-r-2 pr-4'>Logout</NavLink>
       </div>
     </nav>
   )
