@@ -15,12 +15,12 @@ const ModalComponent = ({ isOpen, onRequestClose, details }) => {
         <h2 className="text-2xl font-bold mb-4">Details</h2>
         {details && (
           <div>
-            <p><strong>Name:</strong> {details.name}</p>
-            <p><strong>Email:</strong> {details.email}</p>
-            <p><strong>ID:</strong> {details.studentId}</p>
-            {details.faculty && <p><strong>Faculty:</strong> {details.faculty}</p>}
-            {details.department && <p><strong>Department:</strong> {details.department}</p>}
-            {details.advisor && <p><strong>Advisor:</strong> {details.advisor}</p>}
+            {details.professor.firstName && <p><strong>Name:</strong> {details.professor.firstName}</p>}
+            {/* <p><strong>Email:</strong> {details.email}</p> */}
+            {/* <p><strong>ID:</strong> {details.professorId}</p> */}
+            {/* {details.faculty && <p><strong>Faculty:</strong> {details.faculty}</p>} */}
+            {/* {details.department && <p><strong>Department:</strong> {details.department}</p>} */}
+            {/* {details.advisor && <p><strong>Advisor:</strong> {details.advisor}</p>} */}
           </div>
         )}
         <button
