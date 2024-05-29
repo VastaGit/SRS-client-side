@@ -5,7 +5,7 @@ import HomePage from '../components/AdminComp/HomePage.jsx';
 import Courses from '../components/AdminComp/Courses.jsx';
 import AddUser from '../components/AdminComp/AddUser.jsx';
 
-const AdminRouter = () => {
+const AdminRouter = ({userRole, setUserRole}) => {
   return (
     <Router>
       <div>
@@ -14,7 +14,14 @@ const AdminRouter = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/courses" component={Courses} />
-            <Route path="/add-user" component={AddUser} />
+            <Route path="/addUser" component={AddUser} />
+            <Route path='/logout'>
+              {({ history }) => {
+                setUserRole(null)
+                history.push('/')
+                return null
+              }}
+            </Route>
           </Switch>
         </main>
       </div>
