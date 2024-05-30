@@ -29,6 +29,23 @@ const CourseRegistration = ({ studentId }) => {
     )
   }
 
+  const handleSaveSelection = async () => {
+    const data = selectedCourses.map(course => ({
+      studentId: studentId,
+      courseId: course.courseId,
+      isApproved: 0
+    }))
+
+    console.log(data)
+    try {
+      await axios.post('http://localhost:5145/StudentCourse/', data[0])
+      alert('Courses saved successfully!')
+    } catch (error) {
+      console.error('Error saving courses:', error)
+      alert('Failed to save courses.')
+    }
+  }
+
   return (
     <div className='bg-white min-h-screen'>
       <div className='max-w-4xl mx-auto p-8'>
@@ -42,11 +59,11 @@ const CourseRegistration = ({ studentId }) => {
           <table className='w-full mb-4'>
             <thead>
               <tr>
-                <th className='border px-4 py-2'>Course Name</th>
-                <th className='border px-4 py-2'>Course Code</th>
-                <th className='border px-4 py-2'>Professor</th>
-                <th className='border px-4 py-2'>Credit Hours</th>
-                <th className='border px-4 py-2'>Actions</th>
+                <th className='border px-4 py-2 bg-green-100'>Course Name</th>
+                <th className='border px-4 py-2 bg-green-100'>Course Code</th>
+                <th className='border px-4 py-2 bg-green-100'>Professor</th>
+                <th className='border px-4 py-2 bg-green-100'>Credit Hours</th>
+                <th className='border px-4 py-2 bg-green-100'>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -88,7 +105,10 @@ const CourseRegistration = ({ studentId }) => {
         </div>
         <CourseSchedule studentId={studentId} />
         <div className='text-center mt-4'>
-          <button className='bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700'>
+          <button
+            onClick={handleSaveSelection}
+            className='bg-red-600 text-white px-8 py-3 rounded hover:bg-red-700'
+          >
             Save Selection
           </button>
         </div>
@@ -100,18 +120,33 @@ const CourseRegistration = ({ studentId }) => {
             <h2 className='text-xl font-semibold mb-4 text-red-600'>
               Select Courses
             </h2>
-            <ul>
-              {courses.map(course => (
-                <li key={course.courseId} className='mb-2'>
-                  <button
-                    onClick={() => handleSelectCourse(course)}
-                    className='bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700'
-                  >
-                    {course.courseName}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <div className='overflow-y-auto' style={{ maxHeight: '300px' }}>
+              <table className='w-full'>
+                <thead>
+                  <tr>
+                    <th className='border px-4 py-2 bg-green-100'>Course Name</th>
+                    <th className='border px-4 py-2 bg-green-100'>Credit Hours</th>
+                    <th className='border px-4 py-2 bg-green-100'>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {courses.map(course => (
+                    <tr key={course.courseId}>
+                      <td className='border px-4 py-2'>{course.courseName}</td>
+                      <td className='border px-4 py-2'>{course.creditHours}</td>
+                      <td className='border px-4 py-2'>
+                        <button
+                          onClick={() => handleSelectCourse(course)}
+                          className='bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700'
+                        >
+                          Select
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <div className='text-right mt-4'>
               <button
                 onClick={() => setShowModal(false)}
