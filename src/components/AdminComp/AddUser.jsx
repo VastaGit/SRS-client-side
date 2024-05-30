@@ -9,8 +9,8 @@ const AddUser = () => {
     departmentId: '',
     email: '',
     password: '',
-    role: '', // New field to store the user role
-    advisorID: '' // New field to store the selected advisor (if role is advisor)
+    role: '',
+    advisorID: ''
   });
 
   // State to store the fetched advisors
@@ -22,12 +22,10 @@ const AddUser = () => {
       try {
         const advisorResponse = await axios.get('http://localhost:5145/Advisor');
         setAdvisors(advisorResponse.data);
-        console.log(advisorResponse.data);
 
         //fetching departments data
         const departmentResponse = await axios.get('http://localhost:5145/Department');
         setDepartments(departmentResponse.data);
-        console.log(departmentResponse.data);
       } catch (error) {
         console.error("Error fetching advisors:", error);
       }
@@ -70,11 +68,45 @@ const AddUser = () => {
     }
   };
 
-  const handleSubmit = /*async*/ (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Map formData to match the API expected format
+    let apiData;
+
     try {
-      // const response = await axios.post('YOUR_ENDPOINT_URL', formData);
-      console.log(formData);
+      if(formData.role === 'student'){
+        apiData = {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          departmentId: formData.departmentId,
+          advisorId: formData.advisorID,
+          email: formData.email,
+          password: formData.password
+        };
+        // const postStudentResponse = await axios.post('http://localhost:5145/Student', apiData);
+        await axios.post('http://localhost:5145/Student', apiData);
+        console.log("student post request handled successfully");
+      } else if (formData.role === 'advisor') {
+        // Default values for advisor role
+        apiData = {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          departmentId: formData.departmentId,
+          email: formData.email,
+          password: formData.password
+        };
+        const postProfessorResponse = await axios.post('http://localhost:5145/Professor', apiData);
+        console.log("professor post request handled successfully");
+        // const postAdvisorResponse = await axios.post('http://localhost:5145/Advisor', {
+        //   "professorId": postProfessorResponse.data
+        // });
+        await axios.post('http://localhost:5145/Advisor', {
+          "professorId": postProfessorResponse.data
+        });
+        console.log("advisor post request handled successfully");
+      }
+      
     } catch (error) {
       console.error(error);
     }
