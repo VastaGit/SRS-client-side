@@ -73,6 +73,7 @@ const AddUser = () => {
 
     // Map formData to match the API expected format
     let apiData;
+    let user;
 
     try {
       if(formData.role === 'student'){
@@ -84,9 +85,8 @@ const AddUser = () => {
           email: formData.email,
           password: formData.password
         };
-        // const postStudentResponse = await axios.post('http://localhost:5145/Student', apiData);
+        user = "student";
         await axios.post('http://localhost:5145/Student', apiData);
-        console.log("student post request handled successfully");
       } else if (formData.role === 'advisor') {
         // Default values for advisor role
         apiData = {
@@ -96,16 +96,14 @@ const AddUser = () => {
           email: formData.email,
           password: formData.password
         };
+        user = "advisor";
         const postProfessorResponse = await axios.post('http://localhost:5145/Professor', apiData);
-        console.log("professor post request handled successfully");
-        // const postAdvisorResponse = await axios.post('http://localhost:5145/Advisor', {
-        //   "professorId": postProfessorResponse.data
-        // });
         await axios.post('http://localhost:5145/Advisor', {
           "professorId": postProfessorResponse.data
         });
-        console.log("advisor post request handled successfully");
       }
+      alert(`New ${user} Added successfully`);
+      window.location.reload();
       
     } catch (error) {
       console.error(error);

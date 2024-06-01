@@ -36,7 +36,7 @@ const App = () => {
       setUserInfo(response.data.user)
       localStorage.setItem('jwt', response.data.jwt)
     } catch (error) {
-      console.error('Error fetching courses:', error.message)
+      console.error('Error Logging in:', error.message)
     }
   }
 
