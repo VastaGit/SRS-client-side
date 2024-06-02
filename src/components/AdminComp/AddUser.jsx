@@ -99,7 +99,8 @@ const AddUser = () => {
         user = "advisor";
         const postProfessorResponse = await axios.post('http://localhost:5145/Professor', apiData);
         await axios.post('http://localhost:5145/Advisor', {
-          "professorId": postProfessorResponse.data
+          "professorId": postProfessorResponse.data.professorId,
+          "userId": postProfessorResponse.data.userId
         });
       }
       alert(`New ${user} Added successfully`);
