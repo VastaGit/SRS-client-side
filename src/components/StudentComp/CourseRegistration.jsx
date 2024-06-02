@@ -16,7 +16,7 @@ const CourseRegistration = ({ studentId }) => {
       .catch(error => {
         console.error('There was an error fetching the courses!', error)
       })
-  }, [])
+  }, [studentId])
 
   const handleSelectCourse = course => {
     setSelectedCourses([...selectedCourses, course])
@@ -30,15 +30,19 @@ const CourseRegistration = ({ studentId }) => {
   }
 
   const handleSaveSelection = async () => {
-    const data = selectedCourses.map(course => ({
+    const data = {
       studentId: studentId,
-      courseId: course.courseId,
+      courseId: selectedCourses.map(course => course.courseId),
       isApproved: 0
-    }))
+    }
 
-    console.log(data)
     try {
-      await axios.post('http://localhost:5145/StudentCourse/', data[0])
+      await axios
+        .post('http://localhost:5145/StudentCourse/', data)
+        .then(response => {
+          console.log(response.data)
+        })
+
       alert('Courses saved successfully!')
     } catch (error) {
       console.error('Error saving courses:', error)
@@ -103,7 +107,7 @@ const CourseRegistration = ({ studentId }) => {
             </button>
           </div>
         </div>
-        <CourseSchedule studentId={studentId} />
+        {/* <CourseSchedule studentId={studentId} /> */}
         <div className='text-center mt-4'>
           <button
             onClick={handleSaveSelection}
@@ -124,8 +128,12 @@ const CourseRegistration = ({ studentId }) => {
               <table className='w-full'>
                 <thead>
                   <tr>
-                    <th className='border px-4 py-2 bg-green-100'>Course Name</th>
-                    <th className='border px-4 py-2 bg-green-100'>Credit Hours</th>
+                    <th className='border px-4 py-2 bg-green-100'>
+                      Course Name
+                    </th>
+                    <th className='border px-4 py-2 bg-green-100'>
+                      Credit Hours
+                    </th>
                     <th className='border px-4 py-2 bg-green-100'>Actions</th>
                   </tr>
                 </thead>
