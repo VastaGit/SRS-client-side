@@ -189,17 +189,18 @@ const groupCoursesByDayAndStartTime = courses => {
   return groupedCourses;
 };
 
-const CourseSchedule = () => { //{ role, id }
+const CourseSchedule = ({ userInfo }) => { //{ role, id }
   const [courses, setCourses] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
-  const [role, setRole] = useState('ProfessorId'); // Temporary role state (StudentId or ProfessorId)
-  const [id, setId] = useState(1); // Temporary id state
+  //const [role, setRole] = useState('ProfessorId'); // Temporary role state (StudentId or ProfessorId)
+ // const [id, setId] = useState(1); // Temporary id state
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:5145/Schedule/${role === 'student' ? 'StudentId' : 'ProfessorId'}/${id}`);
+        const response = await axios.get(`http://localhost:5145/Schedule/${userInfo.roleName
+        === 'student' ? 'StudentId' : 'ProfessorId'}/${userInfo.userId}`);
         setCourses(response.data);
         console.log(response.data);
       } catch (error) {
@@ -207,7 +208,7 @@ const CourseSchedule = () => { //{ role, id }
       }
     };
     fetchCourses();
-  }, [role, id]);
+  }, [userInfo]);
 
   const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
   const time = [

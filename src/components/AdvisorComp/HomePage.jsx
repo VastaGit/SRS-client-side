@@ -40,13 +40,16 @@ export default HomePage;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const HomePage = () => {
+
+const HomePage = ({ userInfo }) => {
   const [studentDetails, setStudentDetails] = useState([]);
+
+  
 
   useEffect(() => {
     const fetchStudentDetails = async () => {
       try {
-        const response = await axios.get('http://localhost:5145/Advisor/5');
+        const response = await axios.get(`http://localhost:5145/Advisor/${userInfo.userId}`);
         console.log(response.data);
         setStudentDetails(response.data.students); // Access the students array within the response
       } catch (error) {
@@ -54,8 +57,10 @@ const HomePage = () => {
       }
     };
 
-    fetchStudentDetails();
-  }, []);
+    if (userInfo && userInfo.userId) {
+      fetchStudentDetails();
+    }
+  }, [userInfo]);
 
   const handleRegistrationClick = (studentId) => {
     // Handle registration click

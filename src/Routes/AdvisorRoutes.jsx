@@ -6,26 +6,35 @@ import Courses from '../components/AdminComp/Courses.jsx';
 import CourseSchedule from '../components/CourseSchedule.jsx';
 import CourseRegistration from '../components/AdvisorComp/CourseRegistration.jsx';
 import studentInfo from '../data/studentInfo.json';
-import AcademicRecord from '../components/AcademicRecord.jsx';
+import AcademicRecord from '../components/AcademicRecord';
+import PrivateRoute from './PrivateRoute' // Import the PrivateRoute component
 
-const AdvisorRouter = ({userRole, setUserRole}) => {
+const AdvisorRouter = ({userRole, setUserRole, userInfo}) => {
   return (
     <Router>
       <div>
         <Navbar />
         <main>
           <Switch>
-            <Route exact path="/advisor/home" component={HomePage} />
+          <PrivateRoute
+              exact
+              path="/advisor/home"
+              component={() => <HomePage userInfo={userInfo} />}
+            />
             {/* <Route path="/advisor/courses" component={Courses} /> */}
-            <Route path="/advisor/course-schedule">
-              <CourseSchedule schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
-            </Route>
+
+            <PrivateRoute
+              path="/advisor/course-schedule"
+              component ={() => <CourseSchedule
+               userInfo={userInfo} schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />} 
+            />
+
             {/* <Route path="/advisor/course-registration">
               <CourseRegistration schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
-            </Route>
+            </Route>*/}
             <Route path="/advisor/academic-record">
               <AcademicRecord academicRecord={studentInfo.academicRecord} />
-            </Route> */}
+            </Route> 
             <Route path='/advisor/logout'>
               {({ history }) => {
                 setUserRole(null)
@@ -45,3 +54,4 @@ const AdvisorRouter = ({userRole, setUserRole}) => {
 };
 
 export default AdvisorRouter;
+
