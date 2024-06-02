@@ -168,7 +168,7 @@ const Courses = () => {
       };
       console.log('Schedule Post Data');
       console.log(apiData);
-      await axios.post('http://localhost:5145/Advisor', apiData);
+      await axios.post('http://localhost:5145/Schedule', apiData);
       alert("New Course Added successfully");
       window.location.reload();
     } catch (error) {
