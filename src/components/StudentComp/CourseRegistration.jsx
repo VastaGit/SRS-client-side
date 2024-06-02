@@ -2,24 +2,49 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CourseSchedule from '../CourseSchedule'
 
-const CourseRegistration = ({ studentId }) => {
+const CourseRegistration = ({ userInfo }) => {
   const [courses, setCourses] = useState([])
   const [selectedCourses, setSelectedCourses] = useState([])
   const [showModal, setShowModal] = useState(false)
+  const [ScheduledCourses, setScheduledCourses] = useState([])
 
   useEffect(() => {
     axios
-      .get('http://localhost:5145/Course/available/' + studentId)
+      .get('http://localhost:5145/Course/available/' + userInfo.userId)
       .then(response => {
         setCourses(response.data)
       })
       .catch(error => {
         console.error('There was an error fetching the courses!', error)
       })
-  }, [studentId])
+  }, [userInfo])
 
   const handleSelectCourse = course => {
     setSelectedCourses([...selectedCourses, course])
+    axios
+      .get('http://localhost:5145/Course/available/' + userInfo.userId)
+      .then(response => {
+        const filteredSchedules = response.data
+          .filter(item => item.courseCode === course.courseCode)
+          .map(item => item.schedule.map(scheduleItem => ({
+            dayOfWeek: scheduleItem.dayOfWeek,
+            startTime: scheduleItem.startTime,
+            endTime: scheduleItem.endTime,
+            roomNo: scheduleItem.roomNo,
+            scheduleId: scheduleItem.scheduleId,
+            courseCode: item.courseCode,
+            courseName: item.courseName,
+            professorName: item.professorName
+          })))
+          .flat()
+        setScheduledCourses(prevScheduledCourses => [
+          ...prevScheduledCourses,
+          ...filteredSchedules
+        ])
+      })
+      .catch(error => {
+        console.error('There was an error fetching the courses!', error)
+      })
     setShowModal(false)
   }
 
@@ -27,11 +52,14 @@ const CourseRegistration = ({ studentId }) => {
     setSelectedCourses(
       selectedCourses.filter(c => c.courseId !== course.courseId)
     )
+    setScheduledCourses(
+      ScheduledCourses.filter(sc => sc.courseCode !== course.courseCode)
+    )
   }
 
   const handleSaveSelection = async () => {
     const data = {
-      studentId: studentId,
+      studentId: userInfo.userId,
       courseId: selectedCourses.map(course => course.courseId),
       isApproved: 0
     }
@@ -107,7 +135,7 @@ const CourseRegistration = ({ studentId }) => {
             </button>
           </div>
         </div>
-        {/* <CourseSchedule studentId={studentId} /> */}
+        <CourseSchedule courses={ScheduledCourses} />
         <div className='text-center mt-4'>
           <button
             onClick={handleSaveSelection}

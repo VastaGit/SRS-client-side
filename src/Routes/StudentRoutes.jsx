@@ -18,13 +18,13 @@ const StudentRouter = ({ userRole, setUserRole, userInfo }) => {
           <PrivateRoute
             exact
             path='/student/home'
-            component={() => <HomePage studentId={studentInfo.id} />}
+            component={() => <HomePage userInfo={userInfo} />}
           />
           <PrivateRoute
             path='/student/course-schedule'
             component={() => (
               <CourseSchedule
-                studentId={studentInfo.id}
+                userInfo={userInfo}
                 showCourseDetails={courseCode =>
                   alert(`Course Details for ${courseCode}`)
                 }
@@ -41,7 +41,7 @@ const StudentRouter = ({ userRole, setUserRole, userInfo }) => {
             path='/student/course-registration'
             component={() => (
               <CourseRegistration
-                studentId={studentInfo.id}
+              userInfo={userInfo}
                 showCourseDetails={courseCode =>
                   alert(`Course Details for ${courseCode}`)
                 }

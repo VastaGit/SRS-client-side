@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const HomePage = ({ studentId }) => {
+const HomePage = ({ userInfo }) => {
   const [courses, setCourses] = useState([]);
   const gpa = 3.5;
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://localhost:5145/Schedule/StudentId/' + studentId);
+        const response = await axios.get('http://localhost:5145/Schedule/StudentId/' + userInfo.userId);
         setCourses(response.data);
         console.log(response.data);
       } catch (error) {
@@ -16,7 +16,7 @@ const HomePage = ({ studentId }) => {
       }
     };
     fetchCourses();
-  }, [studentId]);
+  }, [userInfo]);
 
   return (
     <div className="container w-5/6 mx-auto px-4 py-8">
