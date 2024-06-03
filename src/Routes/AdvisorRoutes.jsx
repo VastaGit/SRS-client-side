@@ -29,12 +29,17 @@ const AdvisorRouter = ({userRole, setUserRole, userInfo}) => {
                userInfo={userInfo} schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />} 
             />
 
-            {/* <Route path="/advisor/course-registration">
-              <CourseRegistration schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
-            </Route>*/}
-            <Route path="/advisor/academic-record">
+             <Route path="/advisor/course-registration">
+              <CourseRegistration 
+              userInfo={userInfo}
+              schedule={studentInfo.schedule} showCourseDetails={(courseCode) => alert(`Course Details for ${courseCode}`)} />
+            </Route>
+            <PrivateRoute
+            path='/advisor/academic-record'
+            component={() => (
               <AcademicRecord academicRecord={studentInfo.academicRecord} />
-            </Route> 
+            )}
+          />
             <Route path='/advisor/logout'>
               {({ history }) => {
                 setUserRole(null)

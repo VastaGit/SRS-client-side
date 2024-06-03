@@ -39,19 +39,21 @@ export default HomePage;
 */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { useHistory, Link } from 'react-router-dom'; // Import useHistory and Link
+import AcademicRecordPopup from './AcademicRecordPopup'; 
 
 const HomePage = ({ userInfo }) => {
   const [studentDetails, setStudentDetails] = useState([]);
-
-  
+  const [showPopup, setShowPopup] = useState(false); 
+  const [selectedStudentId, setSelectedStudentId] = useState(null); 
+  const history = useHistory(); // Initialize useHistory hook
 
   useEffect(() => {
     const fetchStudentDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:5145/Advisor/${userInfo.userId}`);
         console.log(response.data);
-        setStudentDetails(response.data.students); // Access the students array within the response
+        setStudentDetails(response.data.students); 
       } catch (error) {
         console.error('Error fetching student details:', error);
       }
@@ -65,11 +67,14 @@ const HomePage = ({ userInfo }) => {
   const handleRegistrationClick = (studentId) => {
     // Handle registration click
     console.log(`Registration clicked for student ID: ${studentId}`);
+    history.push(`/advisor/course-registration/${studentId}`); // Navigate to CourseRegistration page with studentId
   };
 
   const handleAcademicRecordClick = (studentId) => {
     // Handle academic record click
     console.log(`Academic Record clicked for student ID: ${studentId}`);
+    setSelectedStudentId(studentId); 
+    setShowPopup(true); 
   };
 
   return (
@@ -98,6 +103,8 @@ const HomePage = ({ userInfo }) => {
           </tbody>
         </table>
       </div>
+
+      {showPopup && <AcademicRecordPopup studentId={selectedStudentId} onClose={() => setShowPopup(false)} />}
     </div>
   );
 };
